@@ -19,6 +19,30 @@ A comprehensive healthcare AI system that predicts 6 different diseases using ma
 - **Real-time AI Predictions**
 - **Professional Medical Report Generation**
 
+## ⚡ Quick Start
+
+**All trained models are included!** Just clone and run:
+
+```bash
+# Clone the repository
+git clone https://github.com/Milind1234-cpu/MULTIMODEL-DISEASE-PREDICTION.git
+cd MULTIMODEL-DISEASE-PREDICTION
+
+# Backend setup
+cd backend
+pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your MongoDB URI
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+# Frontend setup (in a new terminal)
+cd frontend
+npm install
+npm run dev
+```
+
+Visit http://localhost:5173 and start predicting! 🎉
+
 ## 🚀 Tech Stack
 
 ### Backend
@@ -78,15 +102,17 @@ cd frontend
 npm install
 ```
 
-### 4. Train ML Models (Optional - Pre-trained models included)
+### 4. Train ML Models (Optional - All models included!)
 
-⚠️ **NOTE**: Pre-trained model files for image-based predictions are included in the repository. You can use them directly or retrain them if needed.
+✅ **GREAT NEWS**: All trained model files are included in the repository! You can run the application immediately without any training.
 
 **Included Models:**
-- ✅ Brain Tumor Detection (MobileNetV2)
-- ✅ Pneumonia Detection (MobileNetV2)
-- ✅ Skin Cancer Detection (MobileNetV2)
-- ✅ Eye Disease Detection (MobileNetV2)
+- ✅ Heart Disease (XGBoost) - `diabetes.pkl`
+- ✅ Diabetes (XGBoost) - `heart-disease.pkl`
+- ✅ Brain Tumor Detection (MobileNetV2) - `brain-tumor.pt`
+- ✅ Pneumonia Detection (MobileNetV2) - `pneumonia.pt`
+- ✅ Skin Cancer Detection (MobileNetV2) - `skin-cancer.pt`
+- ✅ Eye Disease Detection (MobileNetV2) - `eye-disease.pt`
 
 **To retrain models (optional):**
 
@@ -103,7 +129,7 @@ python ml/train_image_models.py --disease skin-cancer
 python ml/train_image_models.py --disease eye-disease
 ```
 
-**Training Requirements**:
+**Training Requirements** (only if retraining):
 - Tabular models: ~2 minutes (CPU)
 - Image models: ~10-15 minutes each (GPU recommended)
 - Total storage needed: ~5GB for datasets
@@ -222,8 +248,8 @@ backend/data/
 
 - Never commit `.env` files with real credentials
 - Use environment variables for sensitive data
-- Pre-trained model files are included for convenience (~37MB total)
-- Datasets are excluded from git (large files - ~5GB)
+- All trained model files are included (~38MB total)
+- Datasets are excluded from git (large files - ~5GB, only needed for retraining)
 
 ## 📝 API Endpoints
 
