@@ -24,6 +24,8 @@ wheels/
 venv/
 ENV/
 env/
+.venv/
+.venv-api/
 
 # Environment variables
 .env
@@ -31,11 +33,11 @@ env/
 .env.*.local
 
 # ML Models (large files)
-backend/models/*.pkl
 backend/models/*.h5
 backend/models/*.pth
-# Allow .pt files (trained PyTorch models)
+# Allow trained models
 !backend/models/*.pt
+!backend/models/*.pkl
 
 # Training Data (large files) - EXCLUDE ALL DATA
 backend/data/
@@ -84,3 +86,5 @@ htmlcov/
 *.bak
 *.swp
 *~.nib
+probe_*.txt
+.tmp/
