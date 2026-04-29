@@ -78,7 +78,9 @@ cd frontend
 npm install
 ```
 
-### 4. Train ML Models (Optional)
+### 4. Train ML Models (Required)
+
+⚠️ **IMPORTANT**: Model files (`.pt` files) and datasets are NOT included in this repository due to their large size. You must train the models before running the application.
 
 ```bash
 cd backend
@@ -86,14 +88,17 @@ cd backend
 # Train tabular models (Heart Disease & Diabetes)
 python ml/train_tabular.py
 
-# Train image models (requires datasets)
+# Train image models (requires datasets - see Dataset Information section)
 python ml/train_image_models.py --disease brain-tumor
 python ml/train_image_models.py --disease pneumonia
 python ml/train_image_models.py --disease skin-cancer
 python ml/train_image_models.py --disease eye-disease
 ```
 
-**Note**: Pre-trained models are not included in the repository due to size. You need to train them or download datasets.
+**Training Requirements**:
+- Tabular models: ~2 minutes (CPU)
+- Image models: ~10-15 minutes each (GPU recommended)
+- Total storage needed: ~5GB for datasets
 
 ## 🎯 Running the Application
 
@@ -133,17 +138,55 @@ For Gmail, generate an App Password at: https://myaccount.google.com/apppassword
 
 ## 📊 Dataset Information
 
+⚠️ **IMPORTANT**: Datasets are NOT included in this repository. You must download them separately.
+
 ### Tabular Datasets (Auto-downloaded)
-- **Heart Disease**: UCI Heart Disease Cleveland
-- **Diabetes**: Pima Indians Diabetes
+- **Heart Disease**: UCI Heart Disease Cleveland (auto-downloaded by training script)
+- **Diabetes**: Pima Indians Diabetes (auto-downloaded by training script)
 
 ### Image Datasets (Manual download required)
-- **Brain Tumor**: Kaggle - Brain Tumor MRI Dataset
-- **Pneumonia**: Kaggle - Chest X-Ray Images (Pneumonia)
-- **Skin Cancer**: Kaggle - Skin Cancer MNIST: HAM10000
-- **Eye Disease**: Kaggle - Ocular Disease Recognition
+Download these datasets from Kaggle and place them in the appropriate directories:
 
-Place datasets in `backend/data/{disease}/train` and `backend/data/{disease}/val`
+- **Brain Tumor**: [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+  - Place in: `backend/data/brain-tumor/train/` and `backend/data/brain-tumor/val/`
+  
+- **Pneumonia**: [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
+  - Place in: `backend/data/pneumonia/train/` and `backend/data/pneumonia/val/`
+  
+- **Skin Cancer**: [Skin Cancer MNIST: HAM10000](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000)
+  - Place in: `backend/data/skin-cancer/train/` and `backend/data/skin-cancer/val/`
+  
+- **Eye Disease**: [Ocular Disease Recognition](https://www.kaggle.com/datasets/andrewmvd/ocular-disease-recognition-odir5k)
+  - Place in: `backend/data/eye-disease/train/` and `backend/data/eye-disease/val/`
+
+**Directory Structure**:
+```
+backend/data/
+├── brain-tumor/
+│   ├── train/
+│   │   ├── glioma/
+│   │   ├── meningioma/
+│   │   ├── notumor/
+│   │   └── pituitary/
+│   └── val/
+├── pneumonia/
+│   ├── train/
+│   │   ├── NORMAL/
+│   │   └── PNEUMONIA/
+│   └── val/
+├── skin-cancer/
+│   ├── train/
+│   │   ├── benign/
+│   │   └── malignant/
+│   └── val/
+└── eye-disease/
+    ├── train/
+    │   ├── cataract/
+    │   ├── diabetic_retinopathy/
+    │   ├── glaucoma/
+    │   └── normal/
+    └── val/
+```
 
 ## 🏗️ Project Structure
 
