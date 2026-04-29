@@ -78,9 +78,17 @@ cd frontend
 npm install
 ```
 
-### 4. Train ML Models (Required)
+### 4. Train ML Models (Optional - Pre-trained models included)
 
-⚠️ **IMPORTANT**: Model files (`.pt` files) and datasets are NOT included in this repository due to their large size. You must train the models before running the application.
+⚠️ **NOTE**: Pre-trained model files for image-based predictions are included in the repository. You can use them directly or retrain them if needed.
+
+**Included Models:**
+- ✅ Brain Tumor Detection (MobileNetV2)
+- ✅ Pneumonia Detection (MobileNetV2)
+- ✅ Skin Cancer Detection (MobileNetV2)
+- ✅ Eye Disease Detection (MobileNetV2)
+
+**To retrain models (optional):**
 
 ```bash
 cd backend
@@ -214,8 +222,8 @@ backend/data/
 
 - Never commit `.env` files with real credentials
 - Use environment variables for sensitive data
-- Model files are excluded from git (large files)
-- Datasets are excluded from git (large files)
+- Pre-trained model files are included for convenience (~37MB total)
+- Datasets are excluded from git (large files - ~5GB)
 
 ## 📝 API Endpoints
 
