@@ -32,9 +32,10 @@ env/
 
 # ML Models (large files)
 backend/models/*.pkl
-backend/models/*.pt
 backend/models/*.h5
 backend/models/*.pth
+# Allow .pt files (trained PyTorch models)
+!backend/models/*.pt
 
 # Training Data (large files) - EXCLUDE ALL DATA
 backend/data/
